@@ -1,0 +1,17 @@
+{
+  "name": "gtu-window",
+  "version": "1.0.0",
+  "description": "A pixel-art desk at GTÜ with a window showing Gebze's real weather and moon phase.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "gif": "node scripts/render-gif.mjs",
+    "preview": "node scripts/preview.mjs",
+    "serve": "npx --yes http-server docs -p 8080 -c-1",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "dependencies": {
+    "gifenc": "^1.0.3"
+  },
+  "license": "MIT"
+}

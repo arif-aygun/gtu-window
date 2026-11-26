@@ -1,0 +1,43 @@
+name: Look out the window
+
+on:
+  schedule:
+    - cron: '7,37 * * * *' # every 30 minutes, off the top of the hour
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: window
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run gif
+
+      # Keep the GIF on its own single-commit branch so main's history doesn't grow every half hour.
+      - name: Publish to the output branch
+        working-directory: dist
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add window.gif weather.json
+          git commit -q -m "Weather at $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output

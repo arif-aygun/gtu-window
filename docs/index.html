@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GTÜ Window · live Gebze weather in pixels</title>
+  <meta name="description" content="A pixel-art desk at Gebze Technical University. The window shows Gebze's real weather and the real phase of the moon.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <canvas id="scene" width="160" height="112" aria-label="Pixel-art desk with a window showing the current weather in Gebze"></canvas>
+    <section class="readout" aria-live="polite">
+      <p class="place">Gebze, Kocaeli · GTÜ</p>
+      <p id="summary">Looking outside…</p>
+      <dl>
+        <div><dt>Temperature</dt><dd id="temp">–</dd></div>
+        <div><dt>Wind</dt><dd id="wind">–</dd></div>
+        <div><dt>Moon</dt><dd id="moon">–</dd></div>
+        <div><dt>Sun</dt><dd id="sun">–</dd></div>
+      </dl>
+      <p class="fine"><span id="updated"></span> Weather by <a href="https://open-meteo.com/">Open-Meteo</a> (CC BY 4.0). <a href="https://github.com/arif-aygun/gtu-window">Source</a></p>
+    </section>
+  </main>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
