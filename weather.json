@@ -1,0 +1,16 @@
+{
+  "condition": "cloudy",
+  "label": "Overcast",
+  "cloud": 1,
+  "precip": 0,
+  "wind": 1.8,
+  "temp": 16.8,
+  "phase": "day",
+  "arc": 0.6073298429319371,
+  "moon": 0.6277264660582773,
+  "clock": "13:51",
+  "sunrise": "08:03",
+  "sunset": "17:36",
+  "observed": "2026-11-28T13:45",
+  "generated": "2026-11-28T10:51:23.758Z"
+}
